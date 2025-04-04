@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BayMax | Mental Health Wellcare</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="logo.jpg" type="image/png">
+</head>
+<body>
+    <!-- Emergency SOS Modal -->
+    <div id="sosModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2><i class="fas fa-exclamation-triangle"></i> Emergency SOS Setup</h2>
+            <p>Set up your emergency contacts and information to get help when you need it most.</p>
+            <form id="sosForm">
+                <div class="form-group">
+                    <label for="emergencyContact">Emergency Contact Number</label>
+                    <input type="tel" id="emergencyContact" placeholder="+91 _____-_____" required>
+                </div>
+                <div class="form-group">
+                    <label for="symptoms">Common Symptoms/Potential Issues</label>
+                    <textarea id="symptoms" placeholder="Describe symptoms or issues emergency responders should know about"></textarea>
+                </div>
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="locationAccess">
+                    <label for="locationAccess">Allow access to my location in emergencies</label>
+                </div>
+                <button type="submit" class="btn-save">Save Information</button>
+            </form>
+        </div>
+    </div>
+
+<!-- In your hero section where the SOS button is placed -->
+<button class="btn-secondary" id="sosBtn">
+    <i class="fas fa-plus-circle"></i> Setup Emergency SOS
+    <span class="notification-badge">!</span>
+</button>
+
+    <!-- Header/Navigation -->
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <img src="logo.jpg" alt="BayMax Logo" class="logo">
+                <h1>Bay<span>Max</span></h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#therapists">Find a Therapist</a></li>
+                    <li><a href="#community">Community</a></li>
+                    <li><a href="#library">Resources</a></li>
+                    <li><a href="#wellness">Wellness Tools</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <button class="btn-login">Login</button>
+                    <button class="btn-signup">Sign Up</button>
+                </div>
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Your Mental Health Companion</h2>
+                <p>BayMax provides personalized support, resources, and connections to help you on your mental wellness journey.</p>
+                <div class="hero-buttons">
+                    <button class="btn-primary">Get Started</button>
+                    <button class="btn-secondary" id="sosBtn"><i class="fas fa-plus-circle"></i> Setup Emergency SOS</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="Care.png" alt="Mental health support">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">How BayMax Supports You</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3>Find a Therapist</h3>
+                    <p>Connect with licensed professionals tailored to your specific needs and preferences.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Community Support</h3>
+                    <p>Join safe, moderated forums to share experiences and find understanding.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Mental Health Library</h3>
+                    <p>Access evidence-based information on conditions and treatments.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>Wellness Tools</h3>
+                    <p>Interactive tools to help manage stress, anxiety, and improve mindfulness.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Therapist Finder Section -->
+    <section class="therapists" id="therapists">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Find Your Therapist</h2>
+                <p>Our matching algorithm connects you with professionals specializing in your specific needs.</p>
+            </div>
+            <div class="search-filters">
+                <div class="filter-group">
+                    <label for="specialty">Specialty</label>
+                    <select id="specialty">
+                        <option value="">All Specialties</option>
+                        <option value="anxiety">Anxiety</option>
+                        <option value="depression">Depression</option>
+                        <option value="trauma">Trauma</option>
+                        <option value="addiction">Addiction</option>
+                        <option value="relationships">Relationships</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="therapy-type">Therapy Type</label>
+                    <select id="therapy-type">
+                        <option value="">All Types</option>
+                        <option value="cbt">Cognitive Behavioral</option>
+                        <option value="psychodynamic">Psychodynamic</option>
+                        <option value="humanistic">Humanistic</option>
+                        <option value="dbt">Dialectical Behavior</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="insurance">Insurance</label>
+                    <select id="insurance">
+                        <option value="">All Plans</option>
+                        <option value="aetna">Aetna</option>
+                        <option value="bluecross">Blue Cross</option>
+                        <option value="medicare">Medicare</option>
+                        <option value="selfpay">Self Pay</option>
+                    </select>
+                </div>
+                <button class="btn-primary">Search</button>
+            </div>
+            <div class="trending-searches">
+                <h3>Trending Mental Health Topics</h3>
+                <div class="trending-tags">
+                    <span class="tag">Chronic Pain</span>
+                    <span class="tag">PTSD</span>
+                    <span class="tag">Sexual Abuse Recovery</span>
+                    <span class="tag">Addiction</span>
+                    <span class="tag">ADHD</span>
+                    <span class="tag">Bipolar Disorder</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="community" id="community">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Community Connections</h2>
+                <p>You're not alone. Join our supportive community to share and learn from others.</p>
+            </div>
+            <div class="community-grid">
+                <div class="community-card forum-card">
+                    <h3>Anonymous Forums</h3>
+                    <p>Share your experiences and get support while maintaining complete anonymity.</p>
+                    <div class="forum-stats">
+                        <div class="stat">
+                            <i class="fas fa-users"></i>
+                            <span>12,000+ Members</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-comments"></i>
+                            <span>3,400+ Discussions</span>
+                        </div>
+                    </div>
+                    <button class="btn-outline">Browse Forums</button>
+                </div>
+                <div class="community-card story-card">
+                    <h3>Popular Story</h3>
+                    <div class="story-content">
+                        <div class="story-image">
+                            <img src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Person overcoming challenges">
+                        </div>
+                        <div class="story-text">
+                            <h4>From Burnout to Balance</h4>
+                            <p>Read how Sarah, a corporate lawyer, transformed her mental health through therapy and mindfulness practices.</p>
+                            <a href="#" class="read-more">Read Full Story <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Library Section -->
+    <section class="library" id="library">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Mental Health Library</h2>
+                <p>Trusted resources curated by mental health professionals.</p>
+            </div>
+            <div class="library-categories">
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Conditions</h3>
+                    <ul>
+                        <li><a href="#">Depression</a></li>
+                        <li><a href="#">Anxiety Disorders</a></li>
+                        <li><a href="#">Bipolar Disorder</a></li>
+                        <li><a href="#">PTSD</a></li>
+                    </ul>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-procedures"></i>
+                    </div>
+                    <h3>Treatments</h3>
+                    <ul>
+                        <li><a href="#">Therapy Approaches</a></li>
+                        <li><a href="#">Medication Guide</a></li>
+                        <li><a href="#">Alternative Therapies</a></li>
+                        <li><a href="#">Hospitalization</a></li>
+                    </ul>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Wellness</h3>
+                    <ul>
+                        <li><a href="#">Mindfulness</a></li>
+                        <li><a href="#">Sleep Hygiene</a></li>
+                        <li><a href="#">Nutrition</a></li>
+                        <li><a href="#">Exercise</a></li>
+                    </ul>
+                </div>
+                <div class="category-card contribute-card">
+                    <div class="category-icon">
+                        <i class="fas fa-pen-fancy"></i>
+                    </div>
+                    <h3>Contribute Content</h3>
+                    <p>Are you a mental health professional or writer? Share your expertise with our community.</p>
+                    <button class="btn-outline">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wellness Tools Section -->
+    <section class="wellness" id="wellness">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Wellness Tools</h2>
+                <p>Interactive tools to support your mental health journey.</p>
+            </div>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <h3>Affirmation Cards</h3>
+                    <p>Daily positive affirmations to boost your mindset.</p>
+                    <button class="btn-outline">Try Now</button>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-hand-sparkles"></i>
+                    </div>
+                    <h3>Fidget Games</h3>
+                    <p>Calming interactive tools for anxiety relief.</p>
+                    <button class="btn-outline">Try Now</button>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-cloud-moon"></i>
+                    </div>
+                    <h3>Sleep Sounds</h3>
+                    <p>Soothing audio to improve sleep quality.</p>
+                    <button class="btn-outline">Try Now</button>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-feather-alt"></i>
+                    </div>
+                    <h3>Guided Journal</h3>
+                    <p>Structured prompts for self-reflection.</p>
+                    <button class="btn-outline">Try Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
