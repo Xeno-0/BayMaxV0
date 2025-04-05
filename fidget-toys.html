@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BayMax | Fidget Toys</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="https://i.ibb.co/rGcxTFmS/baymax-logo.png" type="image/png">
+    <style>
+        :root {
+            --primary-red: #e62b2b;
+            --dark-red: #c41f1f;
+            --light-red: #ff6b6b;
+            --beige: #f5f5dc;
+            --light-beige: #fafaf0;
+            --calm-green: #4CAF50;
+            --light-blue: #64b5f6;
+            --dark-blue: #1976d2;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px 0;
+            border-bottom: 3px solid var(--primary-red);
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin: 0;
+        }
+
+        header h1 span {
+            color: var(--primary-red);
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-links li {
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #333;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-red);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-red);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Fidget Games Section */
+        .fidget-section {
+            padding: 60px 0;
+            background-color: white;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary-red);
+            margin-bottom: 15px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-red);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .games-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+        }
+
+        .game-card {
+            background-color: var(--beige);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 8px 20px rgba(230, 43, 43, 0.1);
+            border-top: 5px solid var(--primary-red);
+            text-align: center;
+        }
+
+        .game-title {
+            color: var(--primary-red);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        /* Bubble Pop Game */
+        .bubble-container {
+            width: 100%;
+            height: 300px;
+            background-color: white;
+            border-radius: 8px;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--light-blue);
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background-color: var(--light-blue);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .bubble:hover {
+            transform: scale(1.1);
+            background-color: var(--dark-blue);
+        }
+
+        /* Spinner Game */
+        .spinner-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        #compassion{
+            text-align: center;
+        }
+
+        .spinner {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: conic-gradient(
+                var(--calm-green) 0% 25%,
+                white 25% 50%,
+                var(--calm-green) 50% 75%,
+                white 75% 100%
+            );
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: transform 0.8s cubic-bezier(0.17, 0.67, 0.21, 0.99);
+        }
+
+        .spinner-controls {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-red);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--dark-red);
+            transform: translateY(-2px);
+        }
+
+        .spinner-btn {
+            background-color: var(--primary-red);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .footer-about {
+            background-color: whitesmoke;
+            padding: 25px;
+        }
+
+        .spinner-btn:hover {
+            background-color: var(--dark-red);
+        }
+
+        @media (max-width: 768px) {
+            .games-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .game-card {
+                padding: 20px;
+            }
+            
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <img src="logo.jpg" alt="BayMax Logo" class="logo">
+                <h1>Bay<span>Max</span></h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#features">Features</a></li>
+                    <li><a href="index.html#therapists">Find a Therapist</a></li>
+                    <li><a href="index.html#wellness">Wellness Tools</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Fidget Games Section -->
+    <section class="fidget-section">
+        <div class="container">
+            <h2 class="section-title">Fidget Toys</h2>
+            <p class="section-subtitle">Simple tools to help manage stress and anxiety</p>
+            
+            <div class="games-container">
+                <!-- Bubble Pop Game -->
+                <div class="game-card">
+                    <h3 class="game-title">Bubble Pop</h3>
+                    <p>Click on the bubbles to pop them and release tension</p>
+                    <div class="bubble-container" id="bubble-game">
+                        <!-- Bubbles will be generated here -->
+                    </div>
+                    <button class="btn-primary" id="new-bubbles">
+                        <i class="fas fa-sync-alt"></i> New Bubbles
+                    </button>
+                </div>
+                
+                <!-- Spinner Game -->
+                <div class="game-card">
+                    <h3 class="game-title">Focus Spinner</h3>
+                    <p>Spin and watch to help calm your mind</p>
+                    <div class="spinner-container">
+                        <div class="spinner" id="spinner"></div>
+                        <div class="spinner-controls">
+                            <button class="spinner-btn" id="spin-left">
+                                <i class="fas fa-undo"></i> Left
+                            </button>
+                            <button class="spinner-btn" id="spin-right">
+                                <i class="fas fa-redo"></i> Right
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="logo-container">
+                        <img src="logo.jpg" alt="BayMax Logo" class="logo">
+                        <h3>Bay<span>Max</span></h3>
+                    </div>
+                    <p id="compassion">Compassionate mental health support when you need it most.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Bubble Pop Game
+        const bubbleGame = document.getElementById('bubble-game');
+        const newBubblesBtn = document.getElementById('new-bubbles');
+        
+        function createBubbles() {
+            bubbleGame.innerHTML = '';
+            const bubbleCount = 20;
+            const containerWidth = bubbleGame.offsetWidth;
+            const containerHeight = bubbleGame.offsetHeight;
+            
+            for (let i = 0; i < bubbleCount; i++) {
+                const bubble = document.createElement('div');
+                bubble.className = 'bubble';
+                
+                const size = Math.random() * 50 + 30;
+                const posX = Math.random() * (containerWidth - size);
+                const posY = Math.random() * (containerHeight - size);
+                const opacity = Math.random() * 0.5 + 0.5;
+                
+                bubble.style.width = `${size}px`;
+                bubble.style.height = `${size}px`;
+                bubble.style.left = `${posX}px`;
+                bubble.style.top = `${posY}px`;
+                bubble.style.opacity = opacity;
+                bubble.style.backgroundColor = `rgba(100, 181, 246, ${opacity})`;
+                
+                bubble.addEventListener('click', function() {
+                    this.style.transform = 'scale(1.5)';
+                    this.style.opacity = '0';
+                    setTimeout(() => {
+                        this.remove();
+                    }, 200);
+                });
+                
+                bubbleGame.appendChild(bubble);
+            }
+        }
+        
+        // Spinner Game
+        const spinner = document.getElementById('spinner');
+        const spinLeftBtn = document.getElementById('spin-left');
+        const spinRightBtn = document.getElementById('spin-right');
+        
+        let spinDegrees = 0;
+        
+        function spin(direction) {
+            spinDegrees += direction * 720; // 2 full rotations
+            spinner.style.transform = `rotate(${spinDegrees}deg)`;
+        }
+        
+        // Event Listeners
+        newBubblesBtn.addEventListener('click', createBubbles);
+        spinLeftBtn.addEventListener('click', () => spin(-1));
+        spinRightBtn.addEventListener('click', () => spin(1));
+        
+        // Touch support for spinner
+        spinner.addEventListener('touchstart', handleTouchStart, false);
+        spinner.addEventListener('touchmove', handleTouchMove, false);
+        
+        let xDown = null;
+        
+        function handleTouchStart(evt) {
+            xDown = evt.touches[0].clientX;
+        }
+        
+        function handleTouchMove(evt) {
+            if (!xDown) return;
+            
+            let xUp = evt.touches[0].clientX;
+            let xDiff = xDown - xUp;
+            
+            if (xDiff > 0) {
+                spin(1); // Right swipe
+            } else {
+                spin(-1); // Left swipe
+            }
+            
+            xDown = null;
+        }
+        
+        // Initialize
+        createBubbles();
+    </script>
+</body>
+</html>

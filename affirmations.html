@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BayMax | Affirmation Cards</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Dancing+Script:wght@400;700&family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="logo.jpg" type="image/png">
+    <style>
+        :root {
+            --primary-red: #e62b2b;
+            --dark-red: #c41f1f;
+            --light-red: #ff6b6b;
+            --beige: #f5f5dc;
+            --light-beige: #fafaf0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 0;
+            border-bottom: 3px solid var(--primary-red);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        header h1 span {
+            color: var(--primary-red);
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            padding: 0;
+        }
+
+        .nav-links li {
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #333;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-red);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-red);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Affirmations Page Styles */
+        .affirmation-section {
+            padding: 60px 0;
+            background-color: white;
+        }
+
+        .affirmation-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary-red);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-red);
+        }
+
+        .affirmation-card {
+            background-color: var(--beige);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 8px 20px rgba(230, 43, 43, 0.1);
+            margin: 40px 0;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-top: 5px solid var(--primary-red);
+            position: relative;
+        }
+
+        .affirmation-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            font-weight: 500;
+            color: #333;
+            margin: 20px 0;
+            line-height: 1.4;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .affirmation-controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-red);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--dark-red);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: var(--primary-red);
+            border: 2px solid var(--primary-red);
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-red);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .category-selector {
+            margin: 40px 0;
+        }
+
+        .category-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn-outline{
+            background-color: transparent;
+            border: 2px solid var(--primary-red);
+            color: var(--primary-red);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover, .btn-outline.active {
+            background-color: var(--primary-red);
+            color: white;
+        }
+
+        .saved-affirmations {
+            margin-top: 50px;
+            background-color: var(--light-beige);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #eee;
+        }
+
+        .saved-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .saved-item p {
+            margin: 0;
+            flex-grow: 1;
+            text-align: left;
+            padding-right: 20px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+        }
+
+        .delete-btn {
+            background: none;
+            border: none;
+            color: var(--primary-red);
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .delete-btn:hover {
+            transform: scale(1.1);
+        }
+
+        #compassion{
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 15px;
+            }
+            
+            .affirmation-text {
+                font-size: 1.8rem;
+            }
+            
+            .affirmation-controls {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <img src="logo.jpg" alt="BayMax Logo" class="logo">
+                <h1>Bay<span>Max</span></h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#features">Features</a></li>
+                    <li><a href="index.html#therapists">Find a Therapist</a></li>
+                    <li><a href="index.html#wellness">Wellness Tools</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Affirmation Cards Section -->
+    <section class="affirmation-section">
+        <div class="container">
+            <div class="affirmation-container">
+                <h2 class="section-title">Self Affirmation Cards</h2>
+                <p>Positive affirmations to boost your mental wellbeing</p>
+                
+                <div class="category-selector">
+                    <h3>Select a category:</h3>
+                    <div class="category-buttons">
+                        <button class="btn-outline active" data-category="all">All</button>
+                        <button class="btn-outline" data-category="confidence">Confidence</button>
+                        <button class="btn-outline" data-category="anxiety">Anxiety Relief</button>
+                        <button class="btn-outline" data-category="motivation">Motivation</button>
+                        <button class="btn-outline" data-category="selflove">Self-Love</button>
+                    </div>
+                </div>
+                
+                <div class="affirmation-card">
+                    <div class="affirmation-text" id="current-affirmation">
+                        Click "New Affirmation" to begin
+                    </div>
+                    <div class="affirmation-controls">
+                        <button class="btn-primary" id="new-affirmation">
+                            <i class="fas fa-sync-alt"></i> New Affirmation
+                        </button>
+                        <button class="btn-secondary" id="save-favorite">
+                            <i class="far fa-heart"></i> Save
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="saved-affirmations">
+                    <h3>Your Saved Affirmations</h3>
+                    <div class="saved-list" id="saved-list">
+                        <!-- Saved affirmations will appear here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="logo-container">
+                        <img src="logo.jpg" alt="BayMax Logo" class="logo">
+                        <h3>Bay<span>Max</span></h3>
+                    </div>
+                    <p id="compassion">Compassionate mental health support when you need it most.</p>
+                </div>    
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Affirmations Data
+        const affirmations = {
+            all: [
+                "I am worthy of love and respect",
+                "I choose to focus on what I can control",
+                "My challenges help me grow stronger",
+                "I am enough just as I am",
+                "I release negative thoughts with ease"
+            ],
+            confidence: [
+                "I believe in my abilities",
+                "I am capable of achieving my goals",
+                "My confidence grows every day",
+                "I trust myself to make good decisions",
+                "I am proud of my accomplishments"
+            ],
+            anxiety: [
+                "This feeling is temporary",
+                "I am safe in this moment",
+                "I breathe in calm, I breathe out tension",
+                "I handle challenges with grace",
+                "I release what I cannot control"
+            ],
+            motivation: [
+                "I am motivated and focused",
+                "Every step forward is progress",
+                "I attract success into my life",
+                "My potential is limitless",
+                "I am committed to my growth"
+            ],
+            selflove: [
+                "I accept myself unconditionally",
+                "I treat myself with kindness",
+                "My needs and feelings matter",
+                "I deserve happiness and peace",
+                "I am proud of who I am becoming"
+            ]
+        };
+
+        // DOM Elements
+        const currentAffirmation = document.getElementById('current-affirmation');
+        const newAffirmationBtn = document.getElementById('new-affirmation');
+        const saveFavoriteBtn = document.getElementById('save-favorite');
+        const savedList = document.getElementById('saved-list');
+        const categoryButtons = document.querySelectorAll('.category-buttons button');
+        
+        let currentCategory = 'all';
+        let savedAffirmations = JSON.parse(localStorage.getItem('savedAffirmations')) || [];
+
+        // Event Listeners
+        newAffirmationBtn.addEventListener('click', getRandomAffirmation);
+        saveFavoriteBtn.addEventListener('click', saveCurrentAffirmation);
+        
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                currentCategory = this.dataset.category;
+                getRandomAffirmation();
+            });
+        });
+
+        // Functions
+        function getRandomAffirmation() {
+            const categoryAffirmations = affirmations[currentCategory];
+            const randomIndex = Math.floor(Math.random() * categoryAffirmations.length);
+            currentAffirmation.textContent = categoryAffirmations[randomIndex];
+        }
+
+        function saveCurrentAffirmation() {
+            const affirmation = currentAffirmation.textContent;
+            if (!savedAffirmations.includes(affirmation)) {
+                savedAffirmations.push(affirmation);
+                localStorage.setItem('savedAffirmations', JSON.stringify(savedAffirmations));
+                renderSavedAffirmations();
+                
+                // Visual feedback
+                saveFavoriteBtn.innerHTML = '<i class="fas fa-heart"></i> Saved!';
+                setTimeout(() => {
+                    saveFavoriteBtn.innerHTML = '<i class="far fa-heart"></i> Save';
+                }, 2000);
+            }
+        }
+
+        function renderSavedAffirmations() {
+            savedList.innerHTML = savedAffirmations.map(aff => `
+                <div class="saved-item">
+                    <p>${aff}</p>
+                    <button class="delete-btn" data-affirmation="${aff}">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            `).join('');
+            
+            // Add event listeners to delete buttons
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const affToRemove = this.dataset.affirmation;
+                    savedAffirmations = savedAffirmations.filter(a => a !== affToRemove);
+                    localStorage.setItem('savedAffirmations', JSON.stringify(savedAffirmations));
+                    renderSavedAffirmations();
+                });
+            });
+        }
+
+        // Initialize
+        renderSavedAffirmations();
+    </script>
+</body>
+</html>
